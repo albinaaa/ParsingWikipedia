@@ -1,3 +1,5 @@
+#Выкачка начальных страниц по навыкам
+
 import wikipedia as w
 import openpyxl as o
 import requests
@@ -9,8 +11,8 @@ doc = o.reader.excel.load_workbook(filename="words_temp.xlsx")
 doc.active = 2
 sheet = doc.active
 
-i=5
-#max_row=sheet.max_row
+i=2
+
 for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=sheet.max_column):
     current_row = []
     for cell in row:
@@ -24,7 +26,6 @@ for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=
             soup = BeautifulSoup(page.content, 'html.parser')
             title = soup.find(id="firstHeading").get_text()
             text = soup.find(id="mw-content-text").get_text()
-            #search = w.search(skill, results = 1)
             if "В Википедии нет статьи с таким названием" in text:
                 i=i+1
                 continue
@@ -44,6 +45,6 @@ for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=
             i=i+1
             continue
     i=i+1
-        #print(search)
+        
 
 doc.save('words_temp.xlsx')
