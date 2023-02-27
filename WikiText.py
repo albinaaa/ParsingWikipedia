@@ -1,3 +1,4 @@
+#Выкачка первых абзацев
 
 import wikipedia as w
 import openpyxl as o
@@ -9,9 +10,6 @@ w.set_lang('ru')
 doc = o.reader.excel.load_workbook(filename="words_temp.xlsx")
 doc.active = 7
 sheet = doc.active
-
-
-
 
 i=5
 
@@ -33,17 +31,15 @@ for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=
                 s=' '.join(s)+"..."
                 c3 = sheet.cell(row = i, column = 7)
                 c3.value = s
-                #print(s)
             else:
                 c3 = sheet.cell(row = i, column = 7)
-                c3.value = abz
-                #print(abz)           
+                c3.value = abz          
         except:
             print("Error"+str(i))
             print(fnd)
             i=i+1
             continue          
     i=i+1
-    print(i)
+    #print(i)
 
 doc.save('words_temp.xlsx')
