@@ -1,3 +1,4 @@
+#Выкачка ссылок на упоминаемые страницы
 
 import wikipedia as w
 import openpyxl as o
@@ -68,6 +69,6 @@ for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=
             c5.value = "Error"
             continue          
     i=i+1
-    print(i)
+    #print(i)
 
 doc.save('words_temp.xlsx')
