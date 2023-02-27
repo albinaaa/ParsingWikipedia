@@ -30,7 +30,6 @@ for row in sheet.iter_rows(min_row=i, min_col=1, max_row=sheet.max_row, max_col=
                 i=i+1
                 continue
             else:
-                #page = w.page(search[0])
                 c4 = sheet.cell(row = i, column = 4)
                 c4.value = title
                 print(title)
